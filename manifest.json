@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Fedena Marks Helper",
+  "version": "1.0.0",
+  "description": "Fill Fedena Gradebook marks (HW, Oral, Cw, Attnd...) from a JSON file. Never submits on its own.",
+  "permissions": ["clipboardWrite", "activeTab"],
+  "action": { "default_title": "Fedena Marks Helper", "default_popup": "popup.html" },
+  "content_scripts": [
+    {
+      "matches": ["https://*.fedena.com/assessments/attribute_scores*"],
+      "js": ["marks.js"],
+      "css": ["panel.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_specific_settings": { "gecko": { "id": "fedena-marks-helper@local", "strict_min_version": "109.0" } }
+}
